@@ -7,6 +7,18 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 6.2 COMPONENTS Quick REQUIRED)
 
+#find libpcap
+find_path(PCAP_INCLUDE_DIR pcap.h)
+find_library(PCAP_LIBRARY pcap)
+
+if (NOT PCAP_INCLUDE_DIR OR NOT PCAP_LIBRARY)
+    message(FATAL_ERROR "Libpcap not found. Please install it (eg. brew install libpcap)")
+endif()
+
+#include libpcap headers
+include_directories(${PCAP_INCLUDE_DIR})
+
+
 qt_add_executable(appWIRELORD
     main.cpp
 )
@@ -29,7 +41,9 @@ set_target_properties(appWIRELORD PROPERTIES
 )
 
 target_link_libraries(appWIRELORD
-    PRIVATE Qt6::Quick)
+    PRIVATE Qt6::Quick
+    ${PCAP_LIBRARY}
+)
 
 include(GNUInstallDirs)
 install(TARGETS appWIRELORD
