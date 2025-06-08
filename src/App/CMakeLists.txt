@@ -1,10 +1,10 @@
-add_executable(CARNAGE
+add_executable(App
     main.cpp
     AppController.cpp
     AppController.h
 )
 
-target_link_libraries(CARNAGE
+target_link_libraries(App
     PRIVATE
         Qt6::Core
         Qt6::Quick
