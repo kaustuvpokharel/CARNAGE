@@ -24,24 +24,31 @@ include_directories(
 add_subdirectory(src)
 add_subdirectory(tests)
 
-# qt_add_qml_module(CARNAGE
-#     URI CARNAGE
-#     VERSION 1.0
-#     QML_FILES main.qml
-# )
+
+#documentation control
+file(GLOB DOC_FILES "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
+get_filename_component(DIR_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME)
+add_custom_target(readme_${DIR_NAME} SOURCES ${DOC_FILES})
+
+message(STATUS "📚 Documentation files:")
+file(GLOB_RECURSE ALL_READMES "*/README.md")
+foreach(README ${ALL_READMES})
+    message(STATUS " - ${README}")
+endforeach()
+
 
 # # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # # If you are developing for iOS or macOS you should consider setting an
 # # explicit, fixed bundle identifier manually though.
-# set_target_properties(CARNAGE PROPERTIES
-# #    MACOSX_BUNDLE_GUI_IDENTIFIER com.example.CARNAGE
-#     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
-#     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-#     MACOSX_BUNDLE TRUE
-#     WIN32_EXECUTABLE TRUE
-# )
+set_target_properties(CARNAGE PROPERTIES
+#    MACOSX_BUNDLE_GUI_IDENTIFIER com.example.CARNAGE
+    MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
+    MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+    MACOSX_BUNDLE TRUE
+    WIN32_EXECUTABLE TRUE
+)
 
-# include(GNUInstallDirs)
-# install(TARGETS CARNAGE
-#     BUNDLE DESTINATION .
-#     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+include(GNUInstallDirs)
+install(TARGETS CARNAGE
+    BUNDLE DESTINATION .
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})

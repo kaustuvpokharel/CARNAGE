@@ -5,14 +5,17 @@ add_executable(CARNAGE
 )
 
 target_link_libraries(CARNAGE
-    Qt6::Core
-    Qt6::Quick
-    Qt6::Qml
-    PacketSniffer
-    PacketParser
-    RuleEngine
-    PacketInjector
-    Models
-    Core
-    ${PCAP_LIBRARY}
+    PRIVATE
+        Qt6::Core
+        Qt6::Quick
+        Qt6::Qml
+        UIModule
+        #Core
+        ${PCAP_LIBRARY}
 )
+
+#documentation control
+file(GLOB DOC_FILES "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
+get_filename_component(DIR_NAME ${CMAKE_CURRENT_SOURCE_DIR} NAME)
+add_custom_target(readme_${DIR_NAME} SOURCES ${DOC_FILES})
+

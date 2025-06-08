@@ -6,7 +6,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
-    const QUrl url(QStringLiteral("qrc:/WIRELORD/main.qml"));
+    const QUrl url(QStringLiteral("qrc:/CARNAGE/main/main.qml"));
     QObject::connect(
         &engine,
         &QQmlApplicationEngine::objectCreated,
