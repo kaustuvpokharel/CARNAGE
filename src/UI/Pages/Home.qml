@@ -1,20 +1,24 @@
 import QtQuick
 import QtQuick.Controls
+import CARNAGE 1.0
 
 Page
 {
-    ComboBox {
-        editable: true
-        model: ListModel {
-            id: model
-            ListElement { text: "Banana" }
-            ListElement { text: "Apple" }
-            ListElement { text: "Coconut" }
+    ComboBox
+    {
+        id: ifaceCombo
+        width: parent.width
+        model: AppController.interfaces
+
+        onCurrentIndexChanged:
+        {
+            console.log("Selected interface:", ifaceCombo.currentText)
+            //AppController.startCapture(ifaceCombo.currentText)
         }
-        onAccepted: {
-            if (find(editText) === -1)
-                model.append({text: editText})
+
+        Component.onCompleted:
+        {
+            console.log("Available interfaces:", AppController.interfaces)
         }
     }
-
 }
