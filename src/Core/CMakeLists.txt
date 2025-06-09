@@ -1,4 +1,4 @@
-# add_subdirectory(PacketSniffer)
+add_subdirectory(PacketSniffer)
 # add_subdirectory(PacketParser)
 # add_subdirectory(RuleEngine)
 # add_subdirectory(PacketInjector)
