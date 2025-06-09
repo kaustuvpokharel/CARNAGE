@@ -1,6 +1,6 @@
 #pragma once
 
-#include <iostream>
+#include <err.h>
 #include <pcap.h>
 #include <vector>
 #include <atomic>
@@ -8,6 +8,8 @@
 #include <string>
 #include <sstream>
 #include <memory>
+#include "Logger.hpp"
+
 
 namespace Sniffer
 {
@@ -23,7 +25,7 @@ class PacketSniffer
 {
 public:
     std::vector<std::string> getInterfaces() const;
-    void startCapture(std::vector<std::string> interfaceName);
+    void startCapture(std::string& interfaceName);
     void stopCapture();
 
     void setLogLevel(LogLevel level);
@@ -38,8 +40,8 @@ private:
     std::atomic<bool> sniffing;
     std::thread captureThread;
     LogLevel logLevel;
-
 };
+
 }
 
 

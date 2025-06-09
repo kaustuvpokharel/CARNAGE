@@ -1,6 +1,8 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QDebug>
 #include "PacketSniffer.hpp"
+#include "Logger.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -9,6 +11,10 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
 
     Sniffer::PacketSniffer sniffer;
+    qInfo()<<sniffer.getInterfaces()<<" - ";
+
+    Core::Logger::instance().setLogFile("logs/app.log");
+    Core::Logger::instance().enableConsoleOutput(true);
 
     const QUrl url(QStringLiteral("qrc:/CARNAGE/Main/main.qml"));
     QObject::connect(

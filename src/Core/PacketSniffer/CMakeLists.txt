@@ -28,7 +28,14 @@ add_library(PacketSniffer STATIC
     # TimeStampFormatter.cpp
     # TimeStampFormatter.hpp
 )
+target_link_libraries(PacketSniffer
+    PRIVATE Qt6::Core
+)
 
 target_include_directories(PacketSniffer
     PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR})
+        ${CMAKE_CURRENT_SOURCE_DIR}        # So you can include "PacketSniffer.hpp"
+        ${CMAKE_CURRENT_SOURCE_DIR}/..     # So you can include "Core/Logger.h"
+)
+
+
