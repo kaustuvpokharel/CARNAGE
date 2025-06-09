@@ -1,12 +1,22 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QDebug>
+#include "AppController.h"
+#include "Logger.hpp"
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
-    const QUrl url(QStringLiteral("qrc:/CARNAGE/main/main.qml"));
+
+    AppController controller;
+    qmlRegisterSingletonInstance("CARNAGE", 1, 0, "AppController", &controller);
+
+    Core::Logger::instance().setLogFile("logs/app.log");
+    Core::Logger::instance().enableConsoleOutput(true);
+
+    const QUrl url(QStringLiteral("qrc:/CARNAGE/Main/main.qml"));
     QObject::connect(
         &engine,
         &QQmlApplicationEngine::objectCreated,
