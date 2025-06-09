@@ -1,16 +1,16 @@
-add_executable(App
+add_executable(CARNAGE
     main.cpp
     AppController.cpp
     AppController.h
 )
 
-target_link_libraries(App
+target_link_libraries(CARNAGE
     PRIVATE
         Qt6::Core
         Qt6::Quick
         Qt6::Qml
         UIModule
-        #Core
+        Core
         ${PCAP_LIBRARY}
 )
 
