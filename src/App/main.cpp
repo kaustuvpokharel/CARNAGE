@@ -1,12 +1,16 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include "PacketSniffer.hpp"
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
-    const QUrl url(QStringLiteral("qrc:/CARNAGE/main/main.qml"));
+
+    Sniffer::PacketSniffer sniffer;
+
+    const QUrl url(QStringLiteral("qrc:/CARNAGE/Main/main.qml"));
     QObject::connect(
         &engine,
         &QQmlApplicationEngine::objectCreated,

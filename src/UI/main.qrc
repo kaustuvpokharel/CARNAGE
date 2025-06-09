@@ -1,5 +1,0 @@
-<RCC>
-    <qresource prefix="/CARNAGE">
-        <file>main.qml</file>
-    </qresource>
-</RCC>

@@ -7,7 +7,7 @@ add_subdirectory(PacketSniffer)
 # Optional if you’re grouping Core
 add_library(Core INTERFACE)
 target_link_libraries(Core
-    INTERFACE PacketSniffer PacketParser RuleEngine PacketInjector Models
+    INTERFACE PacketSniffer #[[PacketParser RuleEngine PacketInjector Models]]
 )
 
 #documentation control

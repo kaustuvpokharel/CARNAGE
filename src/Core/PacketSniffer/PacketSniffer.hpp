@@ -22,9 +22,6 @@ enum class LogLevel
 class PacketSniffer
 {
 public:
-    PacketSniffer();
-    ~PacketSniffer();
-
     std::vector<std::string> getInterfaces() const;
     void startCapture(std::vector<std::string> interfaceName);
     void stopCapture();
