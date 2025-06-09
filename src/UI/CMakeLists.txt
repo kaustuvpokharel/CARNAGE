@@ -5,5 +5,6 @@ qt_add_qml_module(UIModule
         Main/main.qml
         Pages/Login.qml
         Pages/Home.qml
+        Components/Header.qml
         RESOURCES QmlResources.qrc
 )

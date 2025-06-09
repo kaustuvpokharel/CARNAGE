@@ -1,24 +1,30 @@
 import QtQuick
 import QtQuick.Controls
+import "../Components"
 import CARNAGE 1.0
 
-Page
+Item
 {
-    ComboBox
+    id: home
+
+    Rectangle
     {
-        id: ifaceCombo
-        width: parent.width
-        model: AppController.interfaces
 
-        onCurrentIndexChanged:
-        {
-            console.log("Selected interface:", ifaceCombo.currentText)
-            //AppController.startCapture(ifaceCombo.currentText)
-        }
+        id:background
+        anchors.fill: parent
+        color: "#121212"
+        // Image
+        // {
+        //     source: "qrc:/images/Assets/images/loginBg.jpg"
+        //     anchors.fill: parent
+        //     fillMode: Image.PreserveAspectCrop
+        //     opacity: 0.2
+        // }
+    }
 
-        Component.onCompleted:
-        {
-            console.log("Available interfaces:", AppController.interfaces)
-        }
+    Header
+    {
+        id: headerComp
+        anchors.fill: parent
     }
 }
