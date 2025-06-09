@@ -4,11 +4,18 @@ add_subdirectory(PacketSniffer)
 # add_subdirectory(PacketInjector)
 # add_subdirectory(Models)
 
-# Optional if you’re grouping Core
-add_library(Core INTERFACE)
+
+add_library(Core STATIC
+    Logger.cpp
+    Logger.hpp
+)
+
 target_link_libraries(Core
     INTERFACE PacketSniffer #[[PacketParser RuleEngine PacketInjector Models]]
+    PRIVATE Qt6::Core
 )
+
+target_include_directories(Core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
 #documentation control
 file(GLOB DOC_FILES "${CMAKE_CURRENT_SOURCE_DIR}/README.md")
