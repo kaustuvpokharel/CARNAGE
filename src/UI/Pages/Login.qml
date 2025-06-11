@@ -3,6 +3,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 import Qt5Compat.GraphicalEffects
+import CARNAGE 1.0
 
 
 Item {
@@ -47,7 +48,7 @@ Item {
 
         id:background
         anchors.fill: parent
-        color: "#121212"
+        color: AppController.palette["colors.primary.background"]
         // Image
         // {
         //     source: "qrc:/images/Assets/images/loginBg.jpg"
@@ -55,6 +56,10 @@ Item {
         //     fillMode: Image.PreserveAspectCrop
         //     opacity: 0.2
         // }
+
+        Component.onCompleted: {
+            console.log("PALETTE", JSON.stringify(AppController.palette));
+        }
     }
 
     Rectangle {
