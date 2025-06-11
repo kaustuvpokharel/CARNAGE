@@ -40,15 +40,10 @@ endforeach()
 # # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # # If you are developing for iOS or macOS you should consider setting an
 # # explicit, fixed bundle identifier manually though.
-# set_target_properties(CARNAGE PROPERTIES
-# #    MACOSX_BUNDLE_GUI_IDENTIFIER com.example.CARNAGE
-#     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
-#     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-#     MACOSX_BUNDLE TRUE
-#     WIN32_EXECUTABLE TRUE
-# )
-
-# include(GNUInstallDirs)
-# install(TARGETS App
-#     BUNDLE DESTINATION .
-#     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+include(GNUInstallDirs)
+set_target_properties(App PROPERTIES
+    MACOSX_BUNDLE TRUE
+    MACOSX_BUNDLE_ICON_FILE icon.icns
+    MACOSX_BUNDLE_BUNDLE_VERSION 0.1
+    MACOSX_BUNDLE_SHORT_VERSION_STRING 0.1
+)

@@ -10,11 +10,11 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
-    // AppController controller;
-    // qmlRegisterSingletonInstance("CARNAGE", 1, 0, "AppController", &controller);
+    AppController controller;
+    qmlRegisterSingletonInstance("CARNAGE", 1, 0, "AppController", &controller);
 
-    // Core::Logger::instance().setLogFile("logs/app.log");
-    // Core::Logger::instance().enableConsoleOutput(true);
+    Core::Logger::instance().setLogFile("logs/app.log");
+    Core::Logger::instance().enableConsoleOutput(true);
 
     const QUrl url(QStringLiteral("qrc:/CARNAGE/Main/main.qml"));
     QObject::connect(
