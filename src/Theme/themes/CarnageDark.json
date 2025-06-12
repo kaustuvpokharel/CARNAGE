@@ -11,14 +11,14 @@
         "hover": "#3a3a3a"
       },
       "text": {
-        "primary": "#ffffff",
+        "primary": "#f2f2f2",
         "secondary": "#a0a0a0",
         "muted": "#666666",
         "disabled": "#3a3a3a"
       },
       "accent": {
-        "primary": "#dc3545",
-        "primaryHover": "#c82333",
+        "primary": "#b62619",
+        "primaryHover": "#dc3545",
         "secondary": "#5a6c7d",
         "secondaryHover": "#495057"
       },
@@ -27,14 +27,14 @@
         "successHover": "#218838",
         "warning": "#ffc107",
         "warningHover": "#e0a800",
-        "error": "#dc3545",
+        "error": "#b62619",
         "errorHover": "#c82333",
         "info": "#6f42c1",
         "infoHover": "#5a2d91"
       },
       "semantic": {
         "allowed": "#28a745",
-        "blocked": "#dc3545",
+        "blocked": "#b62619",
         "modified": "#ffc107",
         "injected": "#6f42c1"
       }
@@ -45,19 +45,19 @@
         "mono": ["JetBrains Mono", "Consolas", "monospace"]
       },
       "fontSize": {
-        "xs": "0.75rem",
-        "sm": "0.875rem",
-        "base": "1rem",
-        "lg": "1.125rem",
-        "xl": "1.25rem",
-        "2xl": "1.5rem",
-        "3xl": "1.875rem"
+        "xs": 12,
+        "sm": 14,
+        "base": 16,
+        "lg": 18,
+        "xl": 20,
+        "2xl": 24,
+        "3xl": 30
       },
       "fontWeight": {
-        "normal": "400",
-        "medium": "500",
-        "semibold": "600",
-        "bold": "700"
+        "normal": 400,
+        "medium": 500,
+        "semibold": 600,
+        "bold": 700
       }
     }
   }
