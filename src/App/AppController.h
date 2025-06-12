@@ -31,5 +31,4 @@ signals:
 private:
     QStringList m_interfaces;
     Sniffer::PacketSniffer m_sniffer;
-    ThemeManager theme;
 };

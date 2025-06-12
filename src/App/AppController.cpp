@@ -2,7 +2,7 @@
 
 AppController::AppController(QObject* parent) : QObject(parent) {
     getInterface(); // auto-load on boot]
-    connect(&theme, &ThemeManager::themeChanged, this, &AppController::themeChanged);
+    connect(ThemeManager::instance(), &ThemeManager::themeChanged, this, &AppController::themeChanged);
 }
 
 QStringList AppController::interfaces() const {
@@ -20,7 +20,7 @@ void AppController::getInterface() {
 }
 
 QVariantMap AppController::palette() const {
-    return theme.flatPalette();
+    return ThemeManager::instance()->flatPalette();
 }
 
 
