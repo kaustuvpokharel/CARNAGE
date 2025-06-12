@@ -15,6 +15,7 @@ target_link_libraries(App
         Qt6::Quick
         Qt6::Qml
         Core
+        Theme
         UIModule
         ${PCAP_LIBRARY}
 )

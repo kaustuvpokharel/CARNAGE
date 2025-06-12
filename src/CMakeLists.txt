@@ -1,6 +1,7 @@
 add_subdirectory(App)
 add_subdirectory(Core)
 add_subdirectory(UI)
+add_subdirectory(Theme)
 
 #documentation control
 file(GLOB DOC_FILES "${CMAKE_CURRENT_SOURCE_DIR}/README.md")

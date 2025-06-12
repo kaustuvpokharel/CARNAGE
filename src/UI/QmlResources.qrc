@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/logo">
         <file alias="logo">Assets/logo/LogoPng.png</file>
+        <file alias="carnageText">Assets/logo/carnageText.png</file>
+        <file alias="logoHead">Assets/logo/head.png</file>
     </qresource>
 </RCC>

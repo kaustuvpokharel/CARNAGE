@@ -54,6 +54,7 @@ Window {
         id: home
         Home
         {
+
             //For inplementation placeholder for my pages later on
         }
     }

@@ -1,7 +1,8 @@
 #include "AppController.h"
 
 AppController::AppController(QObject* parent) : QObject(parent) {
-    getInterface(); // auto-load on boot
+    getInterface(); // auto-load on boot]
+    connect(ThemeManager::instance(), &ThemeManager::themeChanged, this, &AppController::themeChanged);
 }
 
 QStringList AppController::interfaces() const {
@@ -17,6 +18,11 @@ void AppController::getInterface() {
     m_interfaces = result;
     emit interfacesChanged();
 }
+
+QVariantMap AppController::palette() const {
+    return ThemeManager::instance()->flatPalette();
+}
+
 
 // void AppController::startCapture(const QString& interfaceName) {
 //     // convert to std::string and pass to PacketSniffer
