@@ -47,28 +47,30 @@ Item {
                 Image {
                     id: logo
                     Layout.alignment: Qt.AlignHCenter
+                    Layout.rightMargin: 20
                     Layout.preferredHeight: 120
                     Layout.preferredWidth: 200
-                    source: "qrc:/logo/logo"
+                    source: "qrc:/logo/logoHead"
+
                     fillMode: Image.PreserveAspectFit
                 }
 
                 Text {
                     text: "Sniff. Inject. Obliterate."
                     Layout.alignment: Qt.AlignHCenter
-                    color: "#f2f2f2"
-                    font.pixelSize: 30
-                    font.family: "pBold"
-                    font.weight: 700
+                    color: AppController.palette["colors.text.primary"]
+                    font.pixelSize: AppController.palette["typography.fontSize.3xl"]
+                    font.family: AppController.palette["typography.fontFamily.ubuntu"]
+                    font.weight: AppController.palette["typography.fontWeight.bold"]
                 }
 
                 Text {
                     text: "Sign in to continue"
                     Layout.alignment: Qt.AlignHCenter
-                    color: "#b62619"
-                    font.pixelSize: 16
-                    font.family: "pMedium"
-                    font.weight: 500
+                    color: AppController.palette["colors.accent.primary"]
+                    font.pixelSize: AppController.palette["typography.fontSize.lg"]
+                    font.family: AppController.palette["typography.fontFamily.inter"]
+                    font.weight: AppController.palette["typography.fontWeight.semibold"]
                 }
             }
 
@@ -95,8 +97,9 @@ Item {
                         Text {
                             text: "Email"
                             color: AppController.palette["colors.text.secondary"]
-                            font.pixelSize: parseInt(AppController.palette["typography.fontSize.sm"])
-                            font.weight: parseInt(AppController.palette["typography.fontWeight.medium"])
+                            font.pixelSize: AppController.palette["typography.fontSize.sm"]
+                            font.weight: AppController.palette["typography.fontWeight.semibold"]
+                            font.family: AppController.palette["typography.fontFamily.inter"]
                         }
 
                         Rectangle {
@@ -114,9 +117,9 @@ Item {
                                 placeholderText: "Enter your email"
                                 color: AppController.palette["colors.text.primary"]
                                 placeholderTextColor: AppController.palette["colors.text.secondary"]
-                                font.pixelSize: parseInt(AppController.palette["typography.fontSize.base"])
-                                font.weight: parseInt(AppController.palette["typography.fontWeight.normal"])
-                                font.family: "pRegular"
+                                font.pixelSize: AppController.palette["typography.fontSize.base"]
+                                font.weight: AppController.palette["typography.fontWeight.normal"]
+                                font.family: AppController.palette["typography.fontFamily.inter"]
                                 background: null
                                 onTextChanged: emailText = text
                             }
@@ -130,8 +133,9 @@ Item {
                         Text {
                             text: "Password"
                             color: AppController.palette["colors.text.secondary"]
-                            font.pixelSize: parseInt(AppController.palette["typography.fontSize.sm"])
-                            font.weight: parseInt(AppController.palette["typography.fontWeight.medium"])
+                            font.pixelSize: AppController.palette["typography.fontSize.sm"]
+                            font.weight: AppController.palette["typography.fontWeight.semibold"]
+                            font.family: AppController.palette["typography.fontFamily.inter"]
                         }
 
                         Rectangle {
@@ -149,9 +153,9 @@ Item {
                                 placeholderText: "Enter your password"
                                 color: AppController.palette["colors.text.primary"]
                                 placeholderTextColor: AppController.palette["colors.text.secondary"]
-                                font.pixelSize: parseInt(AppController.palette["typography.fontSize.base"])
-                                font.weight: parseInt(AppController.palette["typography.fontWeight.normal"])
-                                font.family: "pRegular"
+                                font.pixelSize: AppController.palette["typography.fontSize.base"]
+                                font.weight: AppController.palette["typography.fontWeight.normal"]
+                                font.family: AppController.palette["typography.fontFamily.inter"]
                                 background: null
                                 onTextChanged: passwordText = text
                             }
@@ -164,6 +168,7 @@ Item {
                         font.pixelSize: AppController.palette["typography.fontSize.sm"]
                         font.weight: AppController.palette["typography.fontWeight.medium"]
                         Layout.alignment: Qt.AlignRight
+                        font.family: AppController.palette["typography.fontFamily.inter"]
 
                         MouseArea {
                             anchors.fill: parent
@@ -175,8 +180,8 @@ Item {
                     Text {
                         id: errorMessage
                         text: ""
-                        color: "#b62619"
-                        font.pixelSize: 14
+                        color: AppController.palette["colors.accent.primary"]
+                        font.pixelSize: AppController.palette["typography.fontSize.sm"]
                         visible: text.length > 0
                     }
 
@@ -202,10 +207,10 @@ Item {
 
                             Text {
                                 text: "Sign In"
-                                color: "#ffffff"
-                                font.pixelSize: 16
-                                font.family: "pBold"
-                                font.weight: 700
+                                color: AppController.palette["colors.text.primary"]
+                                font.pixelSize: AppController.palette["typography.fontSize.sm"]
+                                font.family: AppController.palette["typography.fontFamily.inter"]
+                                font.weight: AppController.palette["typography.fontWeight.bold"]
                             }
                         }
                     }
@@ -218,17 +223,17 @@ Item {
                         Text {
                             text: "Don't have an account?"
                             color: AppController.palette["colors.accent.primary"]
-                            font.pixelSize: 14
-                            font.family: "pMedium"
-                            font.weight: 500
+                            font.pixelSize: AppController.palette["typography.fontSize.sm"]
+                            font.family: AppController.palette["typography.fontFamily.inter"]
+                            font.weight: AppController.palette["typography.fontWeight.medium"]
                         }
 
                         Text {
                             text: "Sign Up"
                             color: AppController.palette["colors.text.primary"]
-                            font.pixelSize: 14
-                            font.family: "pBold"
-                            font.weight: 700
+                            font.pixelSize: AppController.palette["typography.fontSize.sm"]
+                            font.family: AppController.palette["typography.fontFamily.inter"]
+                            font.weight: AppController.palette["typography.fontWeight.bold"]
 
                             MouseArea {
                                 anchors.fill: parent

@@ -41,8 +41,8 @@
     },
     "typography": {
       "fontFamily": {
-        "sans": ["Inter", "system-ui", "sans-serif"],
-        "mono": ["JetBrains Mono", "Consolas", "monospace"]
+        "inter": "Inter 28pt",
+        "ubuntu": "Ubuntu"
       },
       "fontSize": {
         "xs": 12,
