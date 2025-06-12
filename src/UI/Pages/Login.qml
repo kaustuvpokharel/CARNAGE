@@ -227,7 +227,6 @@ Item {
                             font.family: AppController.palette["typography.fontFamily.inter"]
                             font.weight: AppController.palette["typography.fontWeight.medium"]
                         }
-
                         Text {
                             text: "Sign Up"
                             color: AppController.palette["colors.text.primary"]
