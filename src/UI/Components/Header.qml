@@ -42,19 +42,17 @@ Item{
                     id: captureBtn
                     height: 35
                     width: 200
-                    color: AppController.palette["colors.semantic.allowed"] //AppController.palette["colors.accent.primary"]
+                    color: isActivated ? AppController.palette["colors.semantic.allowed"] : AppController.palette["colors.accent.primary"] //AppController.palette["colors.accent.primary"]
                     radius: 5
+
+                    property bool isActivated: true
 
                     MouseArea {
                         anchors.fill: parent
                         cursorShape: Qt.PointingHandCursor
 
                         onClicked: {
-                                if (captureBtn.color === AppController.palette["colors.accent.primary"]) {
-                                    captureBtn.color = AppController.palette["colors.semantic.danger"]; // red
-                                } else {
-                                    captureBtn.color = AppController.palette["colors.accent.primary"]; // original
-                                }
+                                captureBtn.isActivated = !captureBtn.isActivated
                             }
                     }
 
@@ -63,11 +61,11 @@ Item{
                         spacing: 8
 
                         Text {
-                            text: "START CAPTURE"
+                            text:  captureBtn.isActivated ? "START CAPTURE" : "STOP CAPTURE"
                             color: AppController.palette["colors.text.primary"]
                             font.pixelSize: AppController.palette["typography.fontSize.sm"]
                             font.family: AppController.palette["typography.fontFamily.inter"]
-                            font.weight: AppController.palette["typography.fontWeight.semiBold"]
+                            font.weight: AppController.palette["typography.fontWeight.semibold"]
                         }
                     }
                 }
