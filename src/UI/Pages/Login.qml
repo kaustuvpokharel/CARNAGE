@@ -16,6 +16,21 @@ Item {
     property string emailText: ""
     property string passwordText: ""
 
+    Connections
+    {
+        target: AppController
+        function onLoginSuccessful(){
+            loading = false;
+            if (true) {
+                errorMessage.text = "";
+                root.loginSuccessful();
+            } else {
+                errorMessage.text = "Invalid email or password";
+            }
+        }
+    }
+
+
     BusyIndicator {
         id: loader
         anchors.centerIn: parent
@@ -157,6 +172,7 @@ Item {
                                 font.weight: AppController.palette["typography.fontWeight.normal"]
                                 font.family: AppController.palette["typography.fontFamily.inter"]
                                 background: null
+                                echoMode: TextInput.Password
                                 onTextChanged: passwordText = text
                             }
                         }
@@ -197,7 +213,8 @@ Item {
                             enabled: emailText.length > 1 && passwordText.length > 1
 
                             onClicked: {
-                                root.loginSuccessful();
+                                loading = true;
+                                AppController.login(emailText, passwordText)
                             }
                         }
 

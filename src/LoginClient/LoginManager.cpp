@@ -5,7 +5,7 @@ LoginManager::LoginManager(QObject *parent)
 
 }
 
-void LoginManager::login(QString email, QString password)
+void LoginManager::login(const QString& email, const QString& password)
 {
     setLoading(true);
     QUrl url("http://127.0.0.1:8000/login");

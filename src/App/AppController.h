@@ -6,6 +6,7 @@
 #include <QStringList>
 #include "PacketSniffer.hpp"
 #include "ThemeManager.hpp"
+#include "LoginManager.hpp"
 
 class AppController: public QObject
 {
@@ -21,14 +22,17 @@ public:
     QVariantMap palette() const;
 
     Q_INVOKABLE void getInterface();
+    Q_INVOKABLE void login(const QString& email, const QString& password);
     //Q_INVOKABLE void startCapture(const QString& interfaceName);
 
 
 signals:
     void interfacesChanged();
     void themeChanged();
+    void loginSuccessful();
 
 private:
     QStringList m_interfaces;
     Sniffer::PacketSniffer m_sniffer;
+    LoginManager loginManager;
 };

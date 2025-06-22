@@ -14,7 +14,7 @@ class LoginManager: public QObject
 
 public:
     LoginManager(QObject* parent = nullptr);
-    Q_INVOKABLE void login(QString email, QString password); // to send it to the server
+    Q_INVOKABLE void login(const QString& email, const QString& password); // to send it to the server
     //callabale Incside QML
 
     bool loading();
