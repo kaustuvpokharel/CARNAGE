@@ -16,6 +16,7 @@ Item {
     property string emailText: ""
     property string passwordText: ""
 
+
     Connections
     {
         target: AppController
@@ -186,7 +187,7 @@ Item {
                             text: "Remember Me"
                             checked: false
                             Layout.alignment: Qt.AlignLeft
-                            // onCheckedChanged:Appcontroller.rememberMe = checked
+                            onCheckedChanged:AppController.setRemember(checked)
                         }
 
                         Item { Layout.fillWidth: true }

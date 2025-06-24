@@ -16,11 +16,13 @@ class LoginManager: public QObject
 public:
     LoginManager(QObject* parent = nullptr);
     Q_INVOKABLE void login(const QString& email, const QString& password);
+    Q_INVOKABLE void fetchProfile();
 
     bool loading();
     void setLoading(bool value);
     bool remember();
     void setRemember(bool value);
+        void tryAutoLogin();
 
 private:
     bool currentLoadingStatus = false;
@@ -36,4 +38,6 @@ signals:
     void loginSuccessful();
     void loginFailed();
     void rememberChanged();
+    void profileFetchSuccessful(QString user, QString email);
+    void profileFetchFailed();
 };
