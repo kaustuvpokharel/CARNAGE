@@ -24,9 +24,22 @@ void LoginManager::login(const QString& email, const QString& password)
         setLoading(false);
         if(reply->error() == QNetworkReply::NoError)
         {
+            auto json = QJsonDocument::fromJson(reply->readAll()).object();
+            currentToken = json["token"].toString();
+
+            if(currentRemembermeStatus)
+            {
+                saveToken();
+            }
+            else
+            {
+                clearToken();
+            }
             emit loginSuccessful();
         }
-        else {
+        else
+        {
+            clearToken();
             emit loginFailed();
         }
         reply->deleteLater();
@@ -35,14 +48,51 @@ void LoginManager::login(const QString& email, const QString& password)
 
 bool LoginManager::loading()
 {
-    return m_loading;
+    return currentLoadingStatus;
 }
 
 void LoginManager::setLoading(bool value)
 {
-    if(m_loading != value)
+    if(currentLoadingStatus != value)
     {
-        m_loading = value;
+        currentLoadingStatus = value;
         emit loadingChanged();
     }
 }
+
+bool LoginManager::remember()
+{
+    return currentRemembermeStatus;
+}
+
+void LoginManager::setRemember(bool value)
+{
+    if(currentRemembermeStatus != value)
+    {
+        currentRemembermeStatus = value;
+        emit rememberChanged();
+    }
+}
+
+void LoginManager::saveToken()
+{
+    QSettings setting;
+    setting.setValue("auth/token", currentToken);
+}
+
+void LoginManager::loadToken()
+{
+    QSettings setting;
+    currentToken = setting.value("auth/token", "").toString();
+}
+
+void LoginManager::clearToken()
+{
+    QSettings setting;
+    setting.remove("auth/token");
+}
+
+
+
+
+

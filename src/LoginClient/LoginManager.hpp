@@ -5,26 +5,35 @@
 #include <QUrl>
 #include <QJsonObject>
 #include <QJsonDocument>
+#include <QSettings>
 
 class LoginManager: public QObject
 {
     Q_OBJECT
     Q_PROPERTY(bool loading READ loading WRITE setLoading NOTIFY loadingChanged)
+    Q_PROPERTY(bool remember READ remember WRITE setRemember NOTIFY rememberChanged FINAL)
 
 public:
     LoginManager(QObject* parent = nullptr);
-    Q_INVOKABLE void login(const QString& email, const QString& password); // to send it to the server
-    //callabale Incside QML
+    Q_INVOKABLE void login(const QString& email, const QString& password);
 
     bool loading();
     void setLoading(bool value);
+    bool remember();
+    void setRemember(bool value);
 
 private:
-    bool m_loading = false;
+    bool currentLoadingStatus = false;
+    bool currentRemembermeStatus = false;
     QNetworkAccessManager manager;
+    QString currentToken;
+    void saveToken();
+    void loadToken();
+    void clearToken();
 
 signals:
     void loadingChanged();
     void loginSuccessful();
     void loginFailed();
+    void rememberChanged();
 };
