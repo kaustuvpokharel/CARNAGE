@@ -1,5 +1,5 @@
 #include <QObject>
-#include <QNetworkAccessManager> //Network
+#include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QNetworkRequest>
 #include <QUrl>
@@ -10,7 +10,6 @@ class LoginManager: public QObject
 {
     Q_OBJECT
     Q_PROPERTY(bool loading READ loading WRITE setLoading NOTIFY loadingChanged)
-    //C++ code be ack the MOC
 
 public:
     LoginManager(QObject* parent = nullptr);

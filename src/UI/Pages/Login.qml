@@ -178,20 +178,35 @@ Item {
                         }
                     }
 
-                    Text {
-                        text: "Forgot Password?"
-                        color: AppController.palette["colors.accent.primary"]
-                        font.pixelSize: AppController.palette["typography.fontSize.sm"]
-                        font.weight: AppController.palette["typography.fontWeight.medium"]
-                        Layout.alignment: Qt.AlignRight
-                        font.family: AppController.palette["typography.fontFamily.inter"]
+                    RowLayout
+                    {
+                        CheckBox
+                        {
+                            id: rememberMeBox
+                            text: "Remember Me"
+                            checked: false
+                            Layout.alignment: Qt.AlignLeft
+                            // onCheckedChanged:Appcontroller.rememberMe = checked
+                        }
 
-                        MouseArea {
-                            anchors.fill: parent
-                            cursorShape: Qt.PointingHandCursor
-                            onClicked: console.log("Forgot password clicked")
+                        Item { Layout.fillWidth: true }
+
+                        Text {
+                            text: "Forgot Password?"
+                            color: AppController.palette["colors.accent.primary"]
+                            font.pixelSize: AppController.palette["typography.fontSize.sm"]
+                            font.weight: AppController.palette["typography.fontWeight.medium"]
+                            Layout.alignment: Qt.AlignRight
+                            font.family: AppController.palette["typography.fontFamily.inter"]
+
+                            MouseArea {
+                                anchors.fill: parent
+                                cursorShape: Qt.PointingHandCursor
+                                onClicked: console.log("Forgot password clicked")
+                            }
                         }
                     }
+
 
                     Text {
                         id: errorMessage
