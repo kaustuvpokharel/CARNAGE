@@ -1,12 +1,18 @@
 import QtQuick
 import QtQuick.Controls
 import "../Pages"
+import CARNAGE 1.0
 
 Window {
     width: 1920
     height: 1080
     visible: true
     title: qsTr("CARNAGE")
+
+    Component.onCompleted:
+    {
+        AppController.tryAutoLogin();
+    }
 
     StackView
     {

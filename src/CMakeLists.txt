@@ -1,4 +1,5 @@
 add_subdirectory(App)
+add_subdirectory(LoginClient)
 add_subdirectory(Core)
 add_subdirectory(UI)
 add_subdirectory(Theme)

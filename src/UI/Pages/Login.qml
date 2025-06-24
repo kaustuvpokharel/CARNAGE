@@ -16,6 +16,22 @@ Item {
     property string emailText: ""
     property string passwordText: ""
 
+
+    Connections
+    {
+        target: AppController
+        function onLoginSuccessful(){
+            loading = false;
+            if (true) {
+                errorMessage.text = "";
+                root.loginSuccessful();
+            } else {
+                errorMessage.text = "Invalid email or password";
+            }
+        }
+    }
+
+
     BusyIndicator {
         id: loader
         anchors.centerIn: parent
@@ -157,25 +173,41 @@ Item {
                                 font.weight: AppController.palette["typography.fontWeight.normal"]
                                 font.family: AppController.palette["typography.fontFamily.inter"]
                                 background: null
+                                echoMode: TextInput.Password
                                 onTextChanged: passwordText = text
                             }
                         }
                     }
 
-                    Text {
-                        text: "Forgot Password?"
-                        color: AppController.palette["colors.accent.primary"]
-                        font.pixelSize: AppController.palette["typography.fontSize.sm"]
-                        font.weight: AppController.palette["typography.fontWeight.medium"]
-                        Layout.alignment: Qt.AlignRight
-                        font.family: AppController.palette["typography.fontFamily.inter"]
+                    RowLayout
+                    {
+                        CheckBox
+                        {
+                            id: rememberMeBox
+                            text: "Remember Me"
+                            checked: false
+                            Layout.alignment: Qt.AlignLeft
+                            onCheckedChanged:AppController.setRemember(checked)
+                        }
 
-                        MouseArea {
-                            anchors.fill: parent
-                            cursorShape: Qt.PointingHandCursor
-                            onClicked: console.log("Forgot password clicked")
+                        Item { Layout.fillWidth: true }
+
+                        Text {
+                            text: "Forgot Password?"
+                            color: AppController.palette["colors.accent.primary"]
+                            font.pixelSize: AppController.palette["typography.fontSize.sm"]
+                            font.weight: AppController.palette["typography.fontWeight.medium"]
+                            Layout.alignment: Qt.AlignRight
+                            font.family: AppController.palette["typography.fontFamily.inter"]
+
+                            MouseArea {
+                                anchors.fill: parent
+                                cursorShape: Qt.PointingHandCursor
+                                onClicked: console.log("Forgot password clicked")
+                            }
                         }
                     }
+
 
                     Text {
                         id: errorMessage
@@ -197,7 +229,8 @@ Item {
                             enabled: emailText.length > 1 && passwordText.length > 1
 
                             onClicked: {
-                                root.loginSuccessful();
+                                loading = true;
+                                AppController.login(emailText, passwordText)
                             }
                         }
 
@@ -227,7 +260,6 @@ Item {
                             font.family: AppController.palette["typography.fontFamily.inter"]
                             font.weight: AppController.palette["typography.fontWeight.medium"]
                         }
-
                         Text {
                             text: "Sign Up"
                             color: AppController.palette["colors.text.primary"]

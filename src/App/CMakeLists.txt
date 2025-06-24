@@ -7,6 +7,7 @@ add_executable(App
 target_include_directories(App
     PRIVATE
         ${CMAKE_SOURCE_DIR}/src/Core
+        ${CMAKE_SOURCE_DIR}/src/LoginClient
 )
 
 target_link_libraries(App
@@ -14,6 +15,7 @@ target_link_libraries(App
         Qt6::Core
         Qt6::Quick
         Qt6::Qml
+        loginLib
         Core
         Theme
         UIModule
