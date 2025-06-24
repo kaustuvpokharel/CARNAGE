@@ -64,6 +64,7 @@ void LoginManager::fetchProfile()
 
             emit loginSuccessful();
             emit profileFetchSuccessful(user, email);
+            clearToken();
 
         }
         else
