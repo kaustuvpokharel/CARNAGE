@@ -138,6 +138,7 @@ Item {
                                 font.family: AppController.palette["typography.fontFamily.inter"]
                                 background: null
                                 onTextChanged: emailText = text
+                            }
                         }
                     }
 
