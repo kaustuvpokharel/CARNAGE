@@ -12,7 +12,7 @@ QVariantMap AppController::interfaces() const {
 }
 
 void AppController::getInterface() {
-
+    m_interfaces.clear();
     std::map<std::string, bool> rawInterfaces = m_sniffer.getInterfaces();
 
     for (const auto& pair: rawInterfaces)

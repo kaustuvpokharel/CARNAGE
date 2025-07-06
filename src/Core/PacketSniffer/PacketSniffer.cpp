@@ -13,29 +13,22 @@ std::map<std::string, bool> Sniffer::PacketSniffer::getInterfaces() const
 
     if(pcap_findalldevs(&alldevs, errbuff) == -1)
     {
-        LOG_ERROR("Failed to open inteface");
+        LOG_ERROR("Failed to list interfaces: " + errbuff);
+        return interfaces;
     }
 
     for(pcap_if_t* dev = alldevs; dev != nullptr; dev = dev->next)
     {
-
         pcap_t* handle = pcap_open_live(dev->name, 65536, 1, 1000, errbuff);
-        if(dev->next)
-        {
-            if(handle)
-            {
-                interfaces.insert({dev->name, true});
-            }
-            else
-            {
-                interfaces.insert({dev->name, false});
-                LOG_WARN("Grayed out interface seems to be inactive");
-            }
-
+        if (handle) {
+            interfaces.insert({dev->name, true});
             pcap_close(handle);
+        } else {
+            interfaces.insert({dev->name, false});
+            LOG_WARN("Interface " + dev->name + " is inactive. Reason: " + errbuff);
         }
+
     }
-    LOG_ERROR("Failed to open inteface");
     pcap_freealldevs(alldevs);
     return interfaces;
 }

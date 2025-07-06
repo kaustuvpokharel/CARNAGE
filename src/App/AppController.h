@@ -12,7 +12,7 @@
 class AppController: public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QStringList interfaces READ interfaces NOTIFY interfacesChanged FINAL)
+    Q_PROPERTY(QVariantMap interfaces READ interfaces NOTIFY interfacesChanged FINAL)
     Q_PROPERTY(QVariantMap palette READ palette NOTIFY themeChanged FINAL)
     Q_PROPERTY(bool remember READ remember WRITE setRemember NOTIFY rememberChanged FINAL)
 

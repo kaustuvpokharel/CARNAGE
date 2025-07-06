@@ -99,16 +99,36 @@ Item {
                     }
 
                     ComboBox {
-                        editable: false
+                        id: interfaceBox
+                        width: 300
+                        textRole: "name"
+
                         model: ListModel {
-                            id: model
-                            ListElement { text: "Ethernet (eth0)" }
-                            ListElement { text: "Wi-Fi (wlan0)" }
-                            ListElement { text: "Loopback (lo)" }
+                            id: interfaceModel
+                            Component.onCompleted: {
+                                for (let key in AppController.interfaces) {
+                                    append({ name: key, enabled: AppController.interfaces[key] });
+                                }
+                                if (interfaceModel.count > 0)
+                                    interfaceBox.currentIndex = 0;  // default selection
+                            }
                         }
-                        font.pixelSize: AppController.palette["typography.fontSize.sm"]
-                        font.family: AppController.palette["typography.fontFamily.inter"]
-                        font.weight: AppController.palette["typography.fontWeight.medium"]
+
+                        delegate: ItemDelegate {
+                            width: parent.width
+                            text: model.name
+
+                            contentItem: Text {
+                                        text: model.name
+                                        color: model.enabled ? AppController.palette["colors.text.primary"] : "#888888"
+                                    }
+
+                            onClicked: {
+                                if (model.enabled) {
+                                    interfaceBox.currentIndex = index;
+                                }
+                            }
+                        }
                     }
                 }
 
