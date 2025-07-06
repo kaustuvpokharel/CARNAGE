@@ -22,7 +22,7 @@ public:
     void setLoading(bool value);
     bool remember();
     void setRemember(bool value);
-        void tryAutoLogin();
+    void tryAutoLogin();
 
 private:
     bool currentLoadingStatus = false;
