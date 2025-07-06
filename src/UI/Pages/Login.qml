@@ -138,7 +138,6 @@ Item {
                                 font.family: AppController.palette["typography.fontFamily.inter"]
                                 background: null
                                 onTextChanged: emailText = text
-                            }
                         }
                     }
 
@@ -175,6 +174,11 @@ Item {
                                 background: null
                                 echoMode: TextInput.Password
                                 onTextChanged: passwordText = text
+
+                                Keys.onReturnPressed:
+                                {
+                                    signInButton.clicked()
+                                }
                             }
                         }
                     }
@@ -218,10 +222,13 @@ Item {
                     }
 
                     Rectangle {
+                        id: signInButton
                         Layout.fillWidth: true
                         height: 50
                         color: emailText.length > 1 && passwordText.length > 1 ? "#b62619" : "#3a3a3a"
                         radius: 5
+
+                        signal clicked()
 
                         MouseArea {
                             anchors.fill: parent
@@ -245,6 +252,12 @@ Item {
                                 font.family: AppController.palette["typography.fontFamily.inter"]
                                 font.weight: AppController.palette["typography.fontWeight.bold"]
                             }
+                        }
+
+                        onClicked:
+                        {
+                            loading = true;
+                            AppController.login(emailText, passwordText)
                         }
                     }
 

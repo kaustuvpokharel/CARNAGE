@@ -7,18 +7,18 @@ AppController::AppController(QObject* parent) : QObject(parent) {
     connect(&loginManager, &LoginManager::rememberChanged, this, &AppController::rememberChanged);
 }
 
-QStringList AppController::interfaces() const {
+QVariantMap AppController::interfaces() const {
     return m_interfaces;
 }
 
 void AppController::getInterface() {
-    std::vector<std::string> raw = m_sniffer.getInterfaces();
-    QStringList result;
-    for (const auto& iface : raw)
-        result << QString::fromStdString(iface);
+    m_interfaces.clear();
+    std::map<std::string, bool> rawInterfaces = m_sniffer.getInterfaces();
 
-    m_interfaces = result;
-    emit interfacesChanged();
+    for (const auto& pair: rawInterfaces)
+    {
+        m_interfaces.insert(QString::fromStdString(pair.first), pair.second);
+    }
 }
 
 void AppController::login(const QString &email, const QString &password)

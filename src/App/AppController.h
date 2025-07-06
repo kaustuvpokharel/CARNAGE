@@ -4,6 +4,7 @@
 #include <QQmlEngine>
 #include <Logger.hpp>
 #include <QStringList>
+#include <map>
 #include "PacketSniffer.hpp"
 #include "ThemeManager.hpp"
 #include "LoginManager.hpp"
@@ -11,7 +12,7 @@
 class AppController: public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QStringList interfaces READ interfaces NOTIFY interfacesChanged FINAL)
+    Q_PROPERTY(QVariantMap interfaces READ interfaces NOTIFY interfacesChanged FINAL)
     Q_PROPERTY(QVariantMap palette READ palette NOTIFY themeChanged FINAL)
     Q_PROPERTY(bool remember READ remember WRITE setRemember NOTIFY rememberChanged FINAL)
 
@@ -19,7 +20,7 @@ public:
     explicit AppController(QObject* parent = nullptr);
     ~AppController() = default;
 
-    QStringList interfaces() const;
+    QVariantMap interfaces() const;
     QVariantMap palette() const;
     bool remember();
     Q_INVOKABLE void setRemember(bool value);
@@ -38,7 +39,7 @@ signals:
 
 
 private:
-    QStringList m_interfaces;
+    QVariantMap m_interfaces;
     Sniffer::PacketSniffer m_sniffer;
     LoginManager loginManager;
 };
