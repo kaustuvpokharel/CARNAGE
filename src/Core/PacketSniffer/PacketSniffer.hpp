@@ -2,14 +2,10 @@
 
 #include <err.h>
 #include <pcap.h>
-#include <vector>
 #include <atomic>
 #include <thread>
+#include <map>
 #include <string>
-#include <sstream>
-#include <memory>
-#include "Logger.hpp"
-
 
 namespace Sniffer
 {
@@ -24,7 +20,7 @@ enum class LogLevel
 class PacketSniffer
 {
 public:
-    std::vector<std::string> getInterfaces() const;
+    std::map<std::string, bool> getInterfaces() const;
     void startCapture(std::string& interfaceName);
     void stopCapture();
 
