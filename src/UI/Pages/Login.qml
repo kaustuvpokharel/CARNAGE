@@ -123,7 +123,7 @@ Item {
                             Layout.fillWidth: true
                             color: AppController.palette["colors.primary.elevated"]
                             radius: 5
-                            border.color: AppController.palette["colors.primary.border"]
+                            border.color: emailField.focus ? AppController.palette["colors.accent.primary"] : AppController.palette["colors.primary.border"]
                             border.width: 1
 
                             TextField {
@@ -159,7 +159,7 @@ Item {
                             Layout.fillWidth: true
                             color: AppController.palette["colors.primary.elevated"]
                             radius: 5
-                            border.color: AppController.palette["colors.primary.border"]
+                            border.color: passwordField.focus ? AppController.palette["colors.accent.primary"] : AppController.palette["colors.primary.border"]
                             border.width: 1
 
                             TextField {
