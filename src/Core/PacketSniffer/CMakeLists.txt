@@ -15,8 +15,8 @@ add_library(PacketSniffer STATIC
     # IPv4Dumper.hpp
     # IPv6Dumper.cpp
     # IPv6Dumper.hpp
-    # TcpDumper.cpp
-    # TcpDumper.hpp
+    TcpDumper.cpp
+    TcpDumper.hpp
     # UdpDumper.cpp
     # UdpDumper.hpp
     # IcmpDumper.cpp
