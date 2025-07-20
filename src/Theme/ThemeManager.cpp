@@ -11,7 +11,7 @@ ThemeManager* ThemeManager::instance() {
 }
 
 ThemeManager::ThemeManager(QObject* parent) : QObject(parent) {
-    loadTheme("CarnageDark");
+    setTheme("CarnageDark");
     qDebug() << "[ThemeManager] Loaded theme:" << m_currentTheme << m_flatPalette.keys();
 }
 
@@ -59,7 +59,7 @@ QVariantMap ThemeManager::flatten(const QVariantMap& input, const QString& prefi
     QVariantMap flat;
     for (auto it = input.begin(); it != input.end(); ++it) {
         QString key = prefix.isEmpty() ? it.key() : prefix + "." + it.key();
-        if (it.value().typeId() == QMetaType::QVariantMap || it.value().typeId() == QMetaType::Type()) {
+        if (it.value().typeId() == QMetaType::QVariantMap) {
             QVariantMap nested = flatten(it.value().toMap(), key);
             for (auto nestedIt = nested.begin(); nestedIt != nested.end(); ++nestedIt) {
                 flat.insert(nestedIt.key(), nestedIt.value());

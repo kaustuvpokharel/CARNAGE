@@ -8,7 +8,7 @@ void Sniffer::TcpDumper::tcpCapture(u_char *userArgs, const pcap_pkthdr *capHead
 
     decodeEthernet(packet);
     decodeIp(packet+ETHER_HDR_LEN);
-    headerLength = decodeTcp(packet+ETHER_HDR_LEN//+sizeof);
+    headerLength = decodeTcp(packet+ETHER_HDR_LEN//+sizeof); //coontinue gererererere
 
 }
 

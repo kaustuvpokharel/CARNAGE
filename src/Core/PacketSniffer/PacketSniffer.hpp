@@ -5,7 +5,6 @@
 #include <atomic>
 #include <thread>
 #include <map>
-#include <stdint.h>
 #include <string>
 
 namespace Sniffer
